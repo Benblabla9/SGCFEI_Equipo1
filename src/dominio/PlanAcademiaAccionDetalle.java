@@ -2,7 +2,7 @@ package dominio;
 
 public class PlanAcademiaAccionDetalle extends PlanAcademiaAccion {
     private String accion;
-    private String fecha;
+    private String semana;
     private String forma;
 
     public PlanAcademiaAccionDetalle() { }
@@ -11,9 +11,9 @@ public class PlanAcademiaAccionDetalle extends PlanAcademiaAccion {
 
     public String getAccion() { return accion; }
 
-    public void setFecha(String fecha) { this.fecha = fecha; }
+    public void setSemana(String semana) { this.semana = semana; }
 
-    public String getFecha() { return fecha; }
+    public String getSemana() { return semana; }
 
     public void setForma(String forma) { this.forma = forma; }
 

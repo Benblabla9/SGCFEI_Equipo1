@@ -17,4 +17,20 @@ public class PlanCurso {
     public void setSeccion(String seccion) { this.seccion = seccion; }
 
     public String getSeccion() { return seccion; }
+
+    public void setNrc(int nrc) { this.nrc = nrc; }
+
+    public int getNrc() { return nrc; }
+
+    public void setExperienciaEducativa(String experienciaEducativa) { this.experienciaEducativa = experienciaEducativa; }
+
+    public String getExperienciaEducativa() { return experienciaEducativa; }
+
+    public void setProgramaEducativo(String programaEducativo) { this.programaEducativo = programaEducativo; }
+
+    public String getProgramaEducativo() { return programaEducativo; }
+
+    public void setObjetivo(String objetivo) { this.objetivo = objetivo; }
+
+    public String getObjetivo() { return objetivo; }
 }

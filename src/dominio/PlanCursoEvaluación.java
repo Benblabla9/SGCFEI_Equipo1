@@ -20,4 +20,10 @@ public class PlanCursoEvaluación {
     public void setCriterio(String criterio) { this.criterio = criterio; }
 
     public String getCriterio() { return criterio; }
+
+    public void setInstrumento(String instrumento) { this.instrumento = instrumento; }
+
+    public String getInstrumento() { return instrumento; }
+
+    public void setPorcentaje(int porcentaje) { this.porcentaje = porcentaje; }
 }

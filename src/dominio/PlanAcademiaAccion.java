@@ -1,14 +1,14 @@
 package dominio;
 
 public class PlanAcademiaAccion extends PlanAcademia {
-    private String objetivo;
+    private String objetivoParticular;
     private String meta;
 
     public PlanAcademiaAccion() { }
 
-    public void setObjetivo(String objetivo) { this.objetivo = objetivo; }
+    public void setObjetivoParticular(String objetivoParticular) { this.objetivoParticular = objetivoParticular; }
 
-    public String getObjetivo() { return objetivo; }
+    public String getObjetivoParticular() { return objetivoParticular; }
 
     public void setMeta(String meta) { this.meta = meta; }
 
