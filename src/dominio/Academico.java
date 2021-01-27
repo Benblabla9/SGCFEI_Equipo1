@@ -1,9 +1,11 @@
 package dominio;
 
-public class Academico {
+public class Academico extends Usuario {
     private String numeroPersonal;
     private String nombre;
     private String correo;
+    private String apellidos;
+    private int numeroCelular;
 
     public Academico() { }
 
@@ -18,6 +20,14 @@ public class Academico {
     public String getCorreo() { return correo; }
 
     public void setCorreo() { this.correo = correo; }
+
+    public String getApellidos() { return apellidos; }
+
+    public void setApellidos(String apellidos) { this.apellidos = apellidos; }
+
+    public int getNumeroCelular() { return numeroCelular; }
+
+    public void setNumeroCelular(int numeroCelular) { this.numeroCelular = numeroCelular; }
 }
 
 

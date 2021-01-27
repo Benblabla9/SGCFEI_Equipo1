@@ -1,10 +1,15 @@
 package dominio;
 
-public class PlanAcademiaExamen {
+public class PlanAcademiaExamen extends PlanAcademia {
+    private String experienciaEducativa;
     private String temasParcial1;
     private String temasParcial2;
 
     public PlanAcademiaExamen() { }
+
+    public void setExperienciaEducativa(String experienciaEducativa) { this.experienciaEducativa = experienciaEducativa; }
+
+    public String getExperienciaEducativa() { return experienciaEducativa; }
 
     public void setTemasParcial1(String temasParcial1) { this.temasParcial1 = temasParcial1; }
 

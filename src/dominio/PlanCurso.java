@@ -3,6 +3,9 @@ package dominio;
 public class PlanCurso {
     private String bloque;
     private String seccion;
+    private int nrc;
+    private String experienciaEducativa;
+    private String programaEducativo;
 
     public PlanCurso() { }
 

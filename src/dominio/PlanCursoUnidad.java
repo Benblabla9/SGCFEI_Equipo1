@@ -1,6 +1,6 @@
 package dominio;
 
-public class PlanCursoUnidad {
+public class PlanCursoUnidad extends PlanCurso {
     private String unidad;
     private String tema;
     private String fechas;

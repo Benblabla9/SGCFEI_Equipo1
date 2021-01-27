@@ -4,6 +4,8 @@ public class PlanCursoEvaluación {
     private String unidades;
     private String fechas;
     private String criterio;
+    private String instrumento;
+    private int porcentaje;
 
     public PlanCursoEvaluación() { }
 

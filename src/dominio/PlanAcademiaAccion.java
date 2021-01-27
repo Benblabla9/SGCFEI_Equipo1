@@ -1,6 +1,6 @@
 package dominio;
 
-public class PlanAcademiaAccion {
+public class PlanAcademiaAccion extends PlanAcademia {
     private String objetivo;
     private String meta;
 
