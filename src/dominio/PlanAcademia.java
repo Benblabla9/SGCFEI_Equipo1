@@ -7,6 +7,7 @@ public class PlanAcademia {
     private String programaEducativo;
     private String nombreAcademia;
     private String miembros;
+    private int numeroPlan;
 
     public PlanAcademia() { }
 
@@ -33,4 +34,8 @@ public class PlanAcademia {
     public void setMiembros(String miembros) { this.miembros = miembros; }
 
     public String getMiembros() { return miembros; }
+
+    public void setNumeroPlan(int numeroPlan) { this.numeroPlan = numeroPlan; }
+
+    public int getNumeroPlan() { return numeroPlan; }
 }

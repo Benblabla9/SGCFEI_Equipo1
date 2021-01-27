@@ -6,6 +6,7 @@ public class PlanCurso {
     private int nrc;
     private String experienciaEducativa;
     private String programaEducativo;
+    private String objetivo;
 
     public PlanCurso() { }
 
