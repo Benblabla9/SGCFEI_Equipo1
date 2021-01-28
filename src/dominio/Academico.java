@@ -19,7 +19,7 @@ public class Academico extends Usuario {
 
     public String getCorreo() { return correo; }
 
-    public void setCorreo() { this.correo = correo; }
+    public void setCorreo(String correo) { this.correo = correo; }
 
     public String getApellidos() { return apellidos; }
 

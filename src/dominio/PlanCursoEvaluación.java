@@ -1,6 +1,6 @@
 package dominio;
 
-public class PlanCursoEvaluación {
+public class PlanCursoEvaluación extends PlanCurso {
     private String unidades;
     private String fechas;
     private String criterio;
@@ -26,4 +26,6 @@ public class PlanCursoEvaluación {
     public String getInstrumento() { return instrumento; }
 
     public void setPorcentaje(int porcentaje) { this.porcentaje = porcentaje; }
+
+    public int getPorcentaje() { return porcentaje; }
 }

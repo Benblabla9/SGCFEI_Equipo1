@@ -19,7 +19,7 @@ public class PlanAcademia {
 
     public String getPeriodo() { return periodo; }
 
-    public void setObjetivo() { this.objetivo = objetivo; }
+    public void setObjetivo(String objetivo) { this.objetivo = objetivo; }
 
     public String getObjetivo() { return objetivo; }
 
