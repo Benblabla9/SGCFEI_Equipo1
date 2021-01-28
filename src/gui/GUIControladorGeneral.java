@@ -28,13 +28,13 @@ public class GUIControladorGeneral implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { }
 
-    public void cerrarSesionGeneral() {
+    public void cerrarSesion() {
         boolean salir = generarConfirmacion("¿Desea cerrar sesión");
         if (salir){
             try {
                 Stage principal = (Stage) btnCerrarSesion.getScene().getWindow();
                 principal.close();
-                FXMLLoader fxmlCarga = new FXMLLoader(getClass().getResource("/gui/inicioSesion/FXMLIniciarSesion.fxml"));
+                FXMLLoader fxmlCarga = new FXMLLoader(getClass().getResource("/gui/GUIInicioSesion.fxml"));
                 Parent root = fxmlCarga.load();
                 Stage escenario = new Stage();
                 escenario.setResizable(false);
