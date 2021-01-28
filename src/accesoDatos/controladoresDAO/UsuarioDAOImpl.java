@@ -11,6 +11,8 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
     private final Conexion conexion;
     private Connection connection;
     private ResultSet resultado;
+    private ResultSet resultSet;
+    PreparedStatement preparedStatement;
 
     public UsuarioDAOImpl() { conexion = new Conexion(); }
 
@@ -92,5 +94,26 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
             conexion.cerrarConexion();
         }
         return esUsuario;
+    }
+
+    @Override
+    public int buscarIdUsuario(String nombreUsuario, String contrasenia) {
+        int idUsuario = 0;
+        try {
+            connection = conexion.getConnection();
+            String queryIdUsuario = "Select idUser FROM User where nombreUsuario = AND contrasenia = ? ";
+            preparedStatement = connection.prepareStatement(queryIdUsuario);
+            preparedStatement.setString(1, nombreUsuario);
+            preparedStatement.setString(2, contrasenia);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                idUsuario = resultSet.getInt("idUsuario");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return idUsuario;
     }
 }

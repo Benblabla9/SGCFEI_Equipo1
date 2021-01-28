@@ -7,4 +7,5 @@ public interface IUsuarioDAO {
     boolean validarUsuario(String nombreUsuario);
     String rolUsuario(String nombreUsuario, String contrasenia);
     boolean buscarUsuario(String nombreUsuario, String contrasenia);
+    int buscarIdUsuario(String nombreUsuario, String contrasenia);
 }
