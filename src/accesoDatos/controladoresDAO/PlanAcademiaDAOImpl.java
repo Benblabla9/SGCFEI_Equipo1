@@ -3,7 +3,6 @@ package accesoDatos.controladoresDAO;
 import accesoDatos.Conexion;
 import accesoDatos.interfacesDAO.IPlanAcademiaDAO;
 import dominio.PlanAcademia;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -130,5 +129,28 @@ public class PlanAcademiaDAOImpl implements IPlanAcademiaDAO {
             conexion.cerrarConexion();
         }
         return listaPlanAcademia;
+    }
+
+    @Override
+    public int buscarNumeroPlan(String periodo, String programaEducativo, String nombreAcademia) {
+        int numeroPlan = 0;
+        try {
+            connection = conexion.getConnection();
+            String queryNumeroPlan = "Select numeroPlan FROM PlanAcademia where periodo = ? AND programaEducativo = ? " +
+                    "AND nombreAcademia = ? ";
+            preparedStatement = connection.prepareStatement(queryNumeroPlan);
+            preparedStatement.setString(1, periodo);
+            preparedStatement.setString(2, programaEducativo);
+            preparedStatement.setString(3, nombreAcademia);
+            resultado = preparedStatement.executeQuery();
+            while (resultado.next()) {
+                numeroPlan = resultado.getInt("numeroPlan");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PlanAcademiaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return numeroPlan;
     }
 }

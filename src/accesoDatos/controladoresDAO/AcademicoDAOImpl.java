@@ -83,17 +83,18 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
     }
 
     @Override
-    public boolean modificarAcademico(Academico academico) {
+    public boolean modificarAcademico(Academico academico, int idUsuario) {
         boolean modificado = false;
         try{
             connection = conexion.getConnection();
-            PreparedStatement sentenceAcademico = connection.prepareStatement("UPDATE Academico INNER JOIN Usuario ON Academico.idUsuario = User.idUsuario SET " +
-                    "numeroPersonal = ?, nombre = ?, correo = ?, apellidos = ?, numeroCelular = ? WHERE Academido.idUsuario = Usuario.idUsuario");
+            PreparedStatement sentenceAcademico = connection.prepareStatement("UPDATE Academico SET " +
+                    "numeroPersonal = ?, nombre = ?, correo = ?, apellidos = ?, numeroCelular = ? WHERE idUsuario = ?");
             sentenceAcademico.setString(1, academico.getNumeroPersonal());
             sentenceAcademico.setString(2, academico.getNombre());
             sentenceAcademico.setString(3, academico.getCorreo());
             sentenceAcademico.setString(4, academico.getApellidos());
             sentenceAcademico.setInt(5, academico.getNumeroCelular());
+            sentenceAcademico.setInt(6, idUsuario);
             sentenceAcademico.executeUpdate();
             modificado = true;
         }catch (SQLException ex) {
@@ -125,14 +126,14 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
     }
 
     @Override
-    public Academico getAcademico(String numeroPersonal){
+    public Academico getAcademico(int idUsuario){
         Academico academico = new Academico();
         try {
             connection = conexion.getConnection();
             String queryGetAcademico = "SELECT numeroPersonal, nombre, correo, apellidos, numeroCelular FROM Academico" +
-                    "Usuario, nombreUsuario, contrasenia, rol WHERE Academico.idUsuario = Usuario.idUsuario AND Academico.numeroPersonal = ?";
+                    "WHERE idUsuario = ?";
             preparedStatement = connection.prepareStatement(queryGetAcademico);
-            preparedStatement.setString(1, numeroPersonal);
+            preparedStatement.setInt(1, idUsuario);
             resultado = preparedStatement.executeQuery();
             while (resultado.next()) {
                 academico.setNumeroPersonal(resultado.getString("numeroPersonal"));

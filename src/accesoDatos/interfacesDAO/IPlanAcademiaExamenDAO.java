@@ -1,10 +1,10 @@
 package accesoDatos.interfacesDAO;
 
-import dominio.PlanAcademia;
 import dominio.PlanAcademiaExamen;
 
 public interface IPlanAcademiaExamenDAO {
-    boolean agregarPlanAcademiaExamen(PlanAcademiaExamen planAcademiaExamen);
-    boolean modificarPlanAcademiaExamen(PlanAcademiaExamen planAcademiaExamen);
-    boolean eliminarPlanAcademiaExamen(PlanAcademiaExamen planAcademiaExamen);
+    boolean agregarPlanAcademiaExamen(PlanAcademiaExamen planAcademiaExamen, int numeroPlan);
+    boolean eliminarPlanAcademiaExamen(int numeroPlan);
+    boolean modificarPlanAcademiaExamen(PlanAcademiaExamen planAcademiaExamen, int numeroPlan);
+    int buscarIdPlanAcademiaExamen(String experienciaEducativa, int numeroPlan);
 }

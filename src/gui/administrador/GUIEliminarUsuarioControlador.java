@@ -76,11 +76,11 @@ public class GUIEliminarUsuarioControlador extends GUIControladorGeneral impleme
     }
 
     public void eliminarUsuario(int idUsuario) {
+        generarConfirmacion("¿Seguro que desea eliminar al Academico?");
         UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
         boolean eliminar = usuarioDAO.eliminarUsuario(idUsuario);
         if(eliminar == true) {
             generarInformation("El academico fue eliminado exitosamente");
-            abrirVentana("/gui/administrador/GUIMenuAdministrador.fxml", btnEliminar);
         }else {
             generarError("No se pudo eliminar el academico");
         }
