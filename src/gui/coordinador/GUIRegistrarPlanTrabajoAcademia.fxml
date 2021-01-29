@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.coordinador.GUIRegistrarPlanTrabajoAcademiaControlador">
+   <children>
+      <TextField fx:id="tftNumeroPlan" layoutX="23.0" layoutY="33.0" />
+      <TextField fx:id="tftPeriodo" layoutX="202.0" layoutY="33.0" />
+      <ComboBox fx:id="cbProgramaEducativo" layoutX="31.0" layoutY="78.0" prefWidth="150.0" />
+      <TextField fx:id="tftObjetivo" layoutX="214.0" layoutY="78.0" />
+      <DatePicker fx:id="dpFecha" layoutX="374.0" layoutY="33.0" />
+      <TextField fx:id="tftNombreAcademia" layoutX="151.0" layoutY="130.0" />
+      <TextField fx:id="tftMiembros" layoutX="312.0" layoutY="130.0" />
+      <TextField fx:id="tftObjetivoParticular" layoutX="53.0" layoutY="175.0" />
+      <TextField fx:id="tftMeta" layoutX="202.0" layoutY="169.0" />
+      <TextField fx:id="tftAccion" layoutX="53.0" layoutY="222.0" />
+      <TextField fx:id="tftSemana" layoutX="202.0" layoutY="210.0" />
+      <TextField fx:id="tftForma" layoutX="387.0" layoutY="198.0" />
+      <TextField fx:id="tftExperienciaEducativa" layoutX="77.0" layoutY="265.0" />
+      <TextField fx:id="tftTemasParcial1" layoutX="214.0" layoutY="265.0" />
+      <TextField fx:id="tftTemasParcial2" layoutX="399.0" layoutY="259.0" />
+      <Button fx:id="btnRegistrar" layoutX="348.0" layoutY="317.0" mnemonicParsing="false" onAction="#registrar" text="Button" />
+      <Button fx:id="btnCancelar" layoutX="146.0" layoutY="317.0" mnemonicParsing="false" onAction="#cancelar" text="Button" />
+   </children>
+</AnchorPane>
