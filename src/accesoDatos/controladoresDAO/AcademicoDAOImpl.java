@@ -23,10 +23,8 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
     }
 
     @Override
-    public boolean agregarAcademico(Academico academico) {
+    public boolean agregarAcademico(Academico academico, int idUsuario) {
         boolean agregar = false;
-        UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
-        int idUsuario = usuarioDAO.buscarIdUsuario(academico.getNombreUsuario(), academico.getContrasenia());
         try{
             connection = conexion.getConnection();
             PreparedStatement sentenceAcademico = connection.prepareStatement("INSERT INTO Academico(numeroPersonal, nombre, apellidos, correo, numeroCelular, idUsuario) VALUES(?,?,?,?,?,?)");

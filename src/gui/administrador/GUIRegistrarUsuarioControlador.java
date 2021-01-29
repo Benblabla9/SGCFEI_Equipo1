@@ -1,6 +1,8 @@
 package gui.administrador;
 
+import accesoDatos.controladoresDAO.AcademicoDAOImpl;
 import accesoDatos.controladoresDAO.UsuarioDAOImpl;
+import dominio.Academico;
 import dominio.Usuario;
 import gui.GUIControladorGeneral;
 import javafx.fxml.FXML;
@@ -17,6 +19,11 @@ public class GUIRegistrarUsuarioControlador extends GUIControladorGeneral implem
     @FXML private Button btnCancelar;
     @FXML private TextField tftNombreUsuario;
     @FXML private TextField tftContrasenia;
+    @FXML private TextField tftNumeroPersonal;
+    @FXML private TextField tftNombre;
+    @FXML private TextField tftCorreo;
+    @FXML private TextField tftApellidos;
+    @FXML private TextField tftNumeroCelular;
     @FXML private ComboBox cbRol;
 
     @Override
@@ -48,9 +55,42 @@ public class GUIRegistrarUsuarioControlador extends GUIControladorGeneral implem
         UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
         boolean registrarUsuario = usuarioDAO.agregarUsuario(usuario);
         if(registrarUsuario == true){
-            generarInformation("El usuario fue registrado correctamente");
-            abrirVentana("/gui/administrador/GUIRegistrarDocente", btnRegistrar);
+            int idUsuario = 0;
+            idUsuario = usuarioDAO.buscarIdUsuario(usuario.getNombreUsuario(), usuario.getContrasenia());
+            ingresarDatosAcademico(idUsuario);
         }else {
+            generarError("No se pudo registrar el usuario");
+        }
+    }
+
+    public void ingresarDatosAcademico(int idUsuario) {
+        Academico academico = new Academico();
+        academico.setNumeroPersonal(tftNumeroPersonal.getText());
+        academico.setNombre(tftNombre.getText());
+        academico.setCorreo(tftCorreo.getText());
+        academico.setApellidos(tftApellidos.getText());
+        int numeroCelular = Integer.parseInt(tftNumeroCelular.getText());
+        academico.setNumeroCelular(numeroCelular);
+        validarAcademicoRepetido(academico, idUsuario);
+    }
+
+    public void validarAcademicoRepetido(Academico academico, int idUsuario) {
+        AcademicoDAOImpl academicoDAO = new AcademicoDAOImpl();
+        boolean esRepetido = academicoDAO.validarAcademico(tftNumeroPersonal.getText());
+        if(esRepetido == true) {
+            generarError("El numero de personal ya esta registrado");
+        }else {
+            registrarAcademico(academico, idUsuario);
+        }
+    }
+
+    public void registrarAcademico(Academico academico, int idUsuario) {
+        AcademicoDAOImpl academicoDAO = new AcademicoDAOImpl();
+        boolean registrarAcademico = academicoDAO.agregarAcademico(academico, idUsuario);
+        if(registrarAcademico == true){
+            generarInformation("El usuario fue registrado correctamente");
+            abrirVentana("/gui/administrador/GUIInicioSesion.fxml", btnRegistrar);
+        }else{
             generarError("No se pudo registrar el usuario");
         }
     }
@@ -64,6 +104,16 @@ public class GUIRegistrarUsuarioControlador extends GUIControladorGeneral implem
         limiteTextField(tftNombreUsuario, 50);
         limiteTextField(tftContrasenia, 10);
         espaciosProhibidosTextField(tftContrasenia);
+        limiteTextField(tftNumeroPersonal, 10);
+        limiteTextField(tftNombre, 50);
+        limiteTextField(tftCorreo, 50);
+        limiteTextField(tftApellidos, 50);
+        limiteTextField(tftNumeroCelular,10);
+        palabrasProhibidasTextField(tftNumeroCelular);
+        numerosProhibidosTextField(tftNombre);
+        numerosProhibidosTextField(tftApellidos);
+        espaciosProhibidosTextField(tftNumeroCelular);
+        espaciosProhibidosTextField(tftCorreo);
     }
 
 }
