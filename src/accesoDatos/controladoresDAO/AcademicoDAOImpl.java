@@ -29,12 +29,13 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
         int idUsuario = usuarioDAO.buscarIdUsuario(academico.getNombreUsuario(), academico.getContrasenia());
         try{
             connection = conexion.getConnection();
-            PreparedStatement sentenceAcademico = connection.prepareStatement("INSERT INTO Academico(numeroPersonal, nombre, correo, apellidos, numeroCelular, idUsuario) VALUES(?,?,?,?,?,?)");
+            PreparedStatement sentenceAcademico = connection.prepareStatement("INSERT INTO Academico(numeroPersonal, nombre, apellidos, correo, numeroCelular, idUsuario) VALUES(?,?,?,?,?,?)");
             sentenceAcademico.setString(1, academico.getNumeroPersonal());
             sentenceAcademico.setString(2, academico.getNombre());
             sentenceAcademico.setString(3, academico.getApellidos());
-            sentenceAcademico.setInt(4, academico.getNumeroCelular());
-            sentenceAcademico.setInt(5, idUsuario);
+            sentenceAcademico.setString(4, academico.getCorreo());
+            sentenceAcademico.setInt(5, academico.getNumeroCelular());
+            sentenceAcademico.setInt(6, idUsuario);
             sentenceAcademico.executeUpdate();
             agregar = true;
         }catch (SQLException ex) {
