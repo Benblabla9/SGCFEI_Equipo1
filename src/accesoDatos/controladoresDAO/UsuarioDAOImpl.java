@@ -36,6 +36,24 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
     }
 
     @Override
+    public boolean eliminarUsuario(int idUsuario) {
+        boolean resultado = false;
+        try{
+            connection = conexion.getConnection();
+            String queryEliminar = "DELETE FROM Usuario WHERE idUsuario = ?";
+            PreparedStatement sentenceEliminar = connection.prepareStatement(queryEliminar);
+            sentenceEliminar.setInt(1, idUsuario);
+            sentenceEliminar.executeUpdate();
+            resultado = true;
+        }catch(SQLException ex){
+            Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            conexion.cerrarConexion();
+        }
+        return resultado;
+    }
+
+    @Override
     public boolean validarUsuario(String nombreUsuario) {
         boolean esValido = false;
         try{

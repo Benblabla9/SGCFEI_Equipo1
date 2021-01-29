@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.administrador.GUIEliminarUsuarioControlador">
+   <children>
+      <TableView fx:id="tvListaAcademicos" layoutX="22.0" layoutY="33.0" onMouseClicked="#clickTabla" prefHeight="183.0" prefWidth="542.0">
+        <columns>
+          <TableColumn fx:id="tvNumeroPersonal" prefWidth="93.0" text="Numero personal" />
+            <TableColumn fx:id="tvNombre" prefWidth="132.0" text="Nombre" />
+            <TableColumn fx:id="tvApellidos" prefWidth="112.0" text="Apellidos" />
+            <TableColumn fx:id="tvCorreo" prefWidth="92.0" text="Correo" />
+            <TableColumn fx:id="tvNumeroCelular" prefWidth="111.0" text="Numero celular" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnEliminar" layoutX="324.0" layoutY="283.0" mnemonicParsing="false" onAction="#eliminar" text="eliminar" />
+      <Button fx:id="btnCancelar" layoutX="152.0" layoutY="283.0" mnemonicParsing="false" onAction="#cancelar" text="cancelar" />
+   </children>
+</AnchorPane>

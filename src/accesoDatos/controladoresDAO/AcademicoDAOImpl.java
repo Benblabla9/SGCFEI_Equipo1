@@ -65,15 +65,13 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
     }
 
     @Override
-    public boolean eliminarAcademico(String numeroPersonal, String nombre, String correo) {
+    public boolean eliminarAcademico(String numeroPersonal) {
         boolean resultado = false;
         try{
             connection = conexion.getConnection();
-            String queryEliminar = "DELETE FROM Academico WHERE numeroPersonal = ? AND nombre = ? AND correo = ?";
+            String queryEliminar = "DELETE FROM Academico WHERE numeroPersonal = ?";
             PreparedStatement sentenceEliminar = connection.prepareStatement(queryEliminar);
             sentenceEliminar.setString(1, numeroPersonal);
-            sentenceEliminar.setString(2, nombre);
-            sentenceEliminar.setString(3, correo);
             sentenceEliminar.executeUpdate();
             resultado = true;
         }catch(SQLException ex){
@@ -104,6 +102,26 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
             conexion.cerrarConexion();
         }
         return modificado;
+    }
+
+    @Override
+    public int buscarIdAcademico(String numeroPersonal) {
+        int idAcademico = 0;
+        try {
+            connection = conexion.getConnection();
+            String queryIdAcademico = "Select idUsuario FROM Academico where numeroPersonal = ? ";
+            preparedStatement = connection.prepareStatement(queryIdAcademico);
+            preparedStatement.setString(1, numeroPersonal);
+            resultado = preparedStatement.executeQuery();
+            while (resultado.next()) {
+                idAcademico = resultado.getInt("idUsuario");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AcademicoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return idAcademico;
     }
 
     @Override
