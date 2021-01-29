@@ -68,8 +68,7 @@ public class GUIRegistrarUsuarioControlador extends GUIControladorGeneral implem
         academico.setNombre(tftNombre.getText());
         academico.setCorreo(tftCorreo.getText());
         academico.setApellidos(tftApellidos.getText());
-        int numeroCelular = Integer.parseInt(tftNumeroCelular.getText());
-        academico.setNumeroCelular(numeroCelular);
+        academico.setNumeroCelular(tftNumeroCelular.getText());
         validarAcademicoRepetido(academico, idUsuario);
     }
 

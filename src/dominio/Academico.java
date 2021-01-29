@@ -5,7 +5,7 @@ public class Academico extends Usuario {
     private String nombre;
     private String correo;
     private String apellidos;
-    private int numeroCelular;
+    private String numeroCelular;
 
     public Academico() { }
 
@@ -25,9 +25,9 @@ public class Academico extends Usuario {
 
     public void setApellidos(String apellidos) { this.apellidos = apellidos; }
 
-    public int getNumeroCelular() { return numeroCelular; }
+    public String getNumeroCelular() { return numeroCelular; }
 
-    public void setNumeroCelular(int numeroCelular) { this.numeroCelular = numeroCelular; }
+    public void setNumeroCelular(String numeroCelular) { this.numeroCelular = numeroCelular; }
 }
 
 

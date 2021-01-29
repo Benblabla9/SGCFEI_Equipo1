@@ -32,7 +32,7 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
             sentenceAcademico.setString(2, academico.getNombre());
             sentenceAcademico.setString(3, academico.getApellidos());
             sentenceAcademico.setString(4, academico.getCorreo());
-            sentenceAcademico.setInt(5, academico.getNumeroCelular());
+            sentenceAcademico.setString(5, academico.getNumeroCelular());
             sentenceAcademico.setInt(6, idUsuario);
             sentenceAcademico.executeUpdate();
             agregar = true;
@@ -93,7 +93,7 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
             sentenceAcademico.setString(2, academico.getNombre());
             sentenceAcademico.setString(3, academico.getCorreo());
             sentenceAcademico.setString(4, academico.getApellidos());
-            sentenceAcademico.setInt(5, academico.getNumeroCelular());
+            sentenceAcademico.setString(5, academico.getNumeroCelular());
             sentenceAcademico.setInt(6, idUsuario);
             sentenceAcademico.executeUpdate();
             modificado = true;
@@ -140,7 +140,7 @@ public class AcademicoDAOImpl implements IAcademicoDAO {
                 academico.setNombre(resultado.getString("nombre"));
                 academico.setCorreo(resultado.getString("correo"));
                 academico.setApellidos(resultado.getString("apellidos"));
-                academico.setNumeroCelular(resultado.getInt("numeroCelular"));
+                academico.setNumeroCelular(resultado.getString("numeroCelular"));
             }
         }catch (SQLException ex) {
             Logger.getLogger(AcademicoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

@@ -1,9 +1,15 @@
 package accesoDatos.controladoresDAO;
 
-import accesoDatos.interfacesDAO.IUsuarioDAO;
 import accesoDatos.Conexion;
+import accesoDatos.interfacesDAO.IUsuarioDAO;
 import dominio.Usuario;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -133,5 +139,27 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
             conexion.cerrarConexion();
         }
         return idUsuario;
+    }
+
+    @Override
+    public List<Usuario> getUsuarios() {
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        try {
+            connection = conexion.getConnection();
+            String queryUsuario = "SELECT nombreUsuario, rol FROM Usuario";
+            PreparedStatement sentenciaUsuario = connection.prepareStatement(queryUsuario);
+            resultado = sentenciaUsuario.executeQuery();
+            while (resultado.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setNombreUsuario(resultado.getString("nombreUsuario"));
+                usuario.setRol(resultado.getString("rol"));
+                listaUsuarios.add(usuario);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return listaUsuarios;
     }
 }

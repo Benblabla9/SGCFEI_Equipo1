@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.administrador.GUIModificarUsuarioControlador">
+   <children>
+      <Button fx:id="btnModificar" layoutX="400.0" layoutY="328.0" mnemonicParsing="false" onAction="#modificar" text="Button" />
+      <Button fx:id="btnCancelar" layoutX="95.0" layoutY="315.0" mnemonicParsing="false" onAction="#cancelar" text="Button" />
+      <TableView fx:id="tvListaUsuarios" layoutX="47.0" layoutY="14.0" onMouseClicked="#clickTabla" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="tvNombreUsuario" prefWidth="99.0" text="C1" />
+          <TableColumn fx:id="tvRol" prefWidth="100.0" text="C2" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tftNumeroPersonal" layoutX="344.0" layoutY="89.0" />
+      <TextField fx:id="tftNombre" layoutX="344.0" layoutY="138.0" />
+      <TextField fx:id="tftApellidos" layoutX="344.0" layoutY="188.0" />
+      <TextField fx:id="tftCorreo" layoutX="344.0" layoutY="237.0" />
+      <TextField fx:id="tftNumeroCelular" layoutX="332.0" layoutY="279.0" />
+   </children>
+</AnchorPane>
