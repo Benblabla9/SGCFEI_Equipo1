@@ -1,13 +1,13 @@
 package dominio;
 
-public class PlanCursoEvaluación extends PlanCurso {
+public class PlanCursoEvaluacion extends PlanCurso {
     private String unidades;
     private String fechas;
     private String criterio;
     private String instrumento;
     private int porcentaje;
 
-    public PlanCursoEvaluación() { }
+    public PlanCursoEvaluacion() { }
 
     public void setUnidades(String unidades) { this.unidades = unidades; }
 

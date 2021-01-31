@@ -3,7 +3,6 @@ package accesoDatos.controladoresDAO;
 import accesoDatos.Conexion;
 import accesoDatos.interfacesDAO.IPlanCursoDAO;
 import dominio.PlanCurso;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -126,10 +125,33 @@ public class PlanCursoDAOImpl implements IPlanCursoDAO {
                 listaPlanCurso.add(planCurso);
             }
         }catch (SQLException ex){
-            Logger.getLogger(AcademicoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanCursoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             conexion.cerrarConexion();
         }
         return listaPlanCurso;
+    }
+
+    @Override
+    public boolean modificarPlanCurso(PlanCurso planCurso,int nrc) {
+        boolean modificado = false;
+        try{
+            connection = conexion.getConnection();
+            PreparedStatement sentencePlanCurso = connection.prepareStatement("UPDATE PlanCurso SET " +
+                    "nrc = ?, bloque = ?, seccion = ?, experienciaEducativa = ?, programaEducativo = ?,objetivo = ? WHERE nrc = ? ");
+            sentencePlanCurso.setInt(1, planCurso.getNrc());
+            sentencePlanCurso.setString(2, planCurso.getBloque());
+            sentencePlanCurso.setString(3, planCurso.getSeccion());
+            sentencePlanCurso.setString(4, planCurso.getExperienciaEducativa());
+            sentencePlanCurso.setString(5, planCurso.getProgramaEducativo());
+            sentencePlanCurso.setString(6, planCurso.getObjetivo());
+            sentencePlanCurso.executeUpdate();
+            modificado = true;
+        }catch (SQLException ex) {
+            Logger.getLogger(PlanCursoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return modificado;
     }
 }
