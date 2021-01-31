@@ -24,7 +24,7 @@ public class PlanAcademiaExamenDAOImpl implements IPlanAcademiaExamenDAO {
         try{
             connection = conexion.getConnection();
             PreparedStatement sentencePlanAcademiaExamen = connection.prepareStatement("INSERT INTO PlanAcademiaExamen(experienciaEducativa, " +
-                    "temasParcial1, temasParcial2, numeroPlan) VALUES(?,?,?,?)");
+                    "temasParcial1, temasParcial2, idPlanAcademia) VALUES(?,?,?,?)");
             sentencePlanAcademiaExamen.setString(1, planAcademiaExamen.getExperienciaEducativa());
             sentencePlanAcademiaExamen.setString(2, planAcademiaExamen.getTemasParcial1());
             sentencePlanAcademiaExamen.setString(3, planAcademiaExamen.getTemasParcial2());
@@ -63,7 +63,7 @@ public class PlanAcademiaExamenDAOImpl implements IPlanAcademiaExamenDAO {
         try{
             connection = conexion.getConnection();
             PreparedStatement sentencePlanAcademiaExamen = connection.prepareStatement("UPDATE PlanAcademiaExamen SET " +
-                    "experienciaEducativa = ?, temasParcial1 = ?, temasParcial2 = ? WHERE numeroPlan = ?");
+                    "experienciaEducativa = ?, temasParcial1 = ?, temasParcial2 = ? WHERE idPlanAcademia = ?");
             sentencePlanAcademiaExamen.setString(1, planAcademiaExamen.getExperienciaEducativa());
             sentencePlanAcademiaExamen.setString(2, planAcademiaExamen.getTemasParcial1());
             sentencePlanAcademiaExamen.setString(3, planAcademiaExamen.getTemasParcial2());
@@ -84,16 +84,16 @@ public class PlanAcademiaExamenDAOImpl implements IPlanAcademiaExamenDAO {
         try {
             connection = conexion.getConnection();
             String queryIdPlanAcademiaExamen = "Select idPlanAcademiaExamen FROM PlanAcademiaExamen WHERE " +
-                    "experienciaEducativa = ? AND numeroPlan = ? ";
+                    "experienciaEducativa = ? AND idPlanAcademia = ? ";
             preparedStatement = connection.prepareStatement(queryIdPlanAcademiaExamen);
             preparedStatement.setString(1, experienciaEducativa);
             preparedStatement.setInt(2, numeroPlan);
             resultado = preparedStatement.executeQuery();
             while (resultado.next()) {
-                idPlanAcademiaExamen = resultado.getInt("idPlanAcademiaAccion");
+                idPlanAcademiaExamen = resultado.getInt("idPlanAcademiaExamen");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PlanAcademiaAccionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanAcademiaExamenDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             conexion.cerrarConexion();
         }

@@ -93,7 +93,7 @@ public class GUIRegistrarPlanTrabajoAcademiaControlador extends GUIControladorGe
         boolean registrarPlanAcademiaAccion = planAcademiaAccionDAO.agregarPlanAcademiaAccion(planAcademiaAccion, numeroPlan);
         if(registrarPlanAcademiaAccion == true) {
             int idPlanAcademiaAccion = 0;
-            idPlanAcademiaAccion = planAcademiaAccionDAO.buscarIdPlanAcademiaAccion(planAcademiaAccion.getObjetivoParticular(), planAcademiaAccion.getMeta(), numeroPlan);
+            idPlanAcademiaAccion = planAcademiaAccionDAO.buscarIdPlanAcademiaAccion(numeroPlan);
             ingresarDatosPlanAcademiaAccionDetalle(idPlanAcademiaAccion, numeroPlan);
         }else {
             generarError("No se pudo registrar el plan de academia accion");

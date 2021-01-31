@@ -3,7 +3,6 @@ package accesoDatos.controladoresDAO;
 import accesoDatos.Conexion;
 import accesoDatos.interfacesDAO.IPlanAcademiaAccionDetalleDAO;
 import dominio.PlanAcademiaAccionDetalle;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,8 +23,7 @@ public class PlanAcademiaAccionDetalleDAOImpl implements IPlanAcademiaAccionDeta
         boolean agregar = false;
         try{
             connection = conexion.getConnection();
-            PreparedStatement sentencePlanAcademiaAccionDetalle = connection.prepareStatement("INSERT INTO PlanAcademiaAccionDetalle" +
-                    "(accion, semana, forma, idPlanAcademiaAccion) VALUES(?,?,?,?)");
+            PreparedStatement sentencePlanAcademiaAccionDetalle = connection.prepareStatement("INSERT INTO PlanAcademiaAccionDetalle (accion, semana, forma, idPlanAcademiaAccion) VALUES(?,?,?,?)");
             sentencePlanAcademiaAccionDetalle.setString(1, planAcademiaAccionDetalle.getAccion());
             sentencePlanAcademiaAccionDetalle.setString(2, planAcademiaAccionDetalle.getSemana());
             sentencePlanAcademiaAccionDetalle.setString(3, planAcademiaAccionDetalle.getForma());

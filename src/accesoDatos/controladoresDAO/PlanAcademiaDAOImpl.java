@@ -26,8 +26,8 @@ public class PlanAcademiaDAOImpl implements IPlanAcademiaDAO {
         try{
             connection = conexion.getConnection();
             PreparedStatement sentencePlanAcademia = connection.prepareStatement("INSERT INTO PlanAcademia" +
-                    "(numeroPlan, fecha, peridoo, objetivo, programaEducativo, nombreAcademia, miembros)" +
-                    " VALUES(?,?,?.?,?,?,?)");
+                    "(numeroPlan, fecha, periodo, objetivo, programaEducativo, nombreAcademia, miembros)" +
+                    " VALUES(?,?,?,?,?,?,?)");
             sentencePlanAcademia.setInt(1, planAcademia.getNumeroPlan());
             sentencePlanAcademia.setString(2, planAcademia.getFecha());
             sentencePlanAcademia.setString(3, planAcademia.getPeriodo());
@@ -98,7 +98,7 @@ public class PlanAcademiaDAOImpl implements IPlanAcademiaDAO {
                 planAcademia.setFecha(resultado.getString("fecha"));
             }
         }catch (SQLException ex) {
-            Logger.getLogger(PlanCursoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanAcademiaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             conexion.cerrarConexion();
         }
@@ -124,7 +124,7 @@ public class PlanAcademiaDAOImpl implements IPlanAcademiaDAO {
                 listaPlanAcademia.add(planAcademia);
             }
         }catch (SQLException ex){
-            Logger.getLogger(AcademicoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PlanAcademiaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             conexion.cerrarConexion();
         }

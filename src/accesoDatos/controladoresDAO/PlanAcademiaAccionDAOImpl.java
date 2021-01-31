@@ -23,7 +23,7 @@ public class PlanAcademiaAccionDAOImpl implements IPlanAcademiaAccionDAO {
         boolean agregar = false;
         try{
             connection = conexion.getConnection();
-            PreparedStatement sentencePlanAcademiaAccion = connection.prepareStatement("INSERT INTO PlanAcademiaAccion(objetivoParticular, meta, numeroPersonal) VALUES(?,?,?)");
+            PreparedStatement sentencePlanAcademiaAccion = connection.prepareStatement("INSERT INTO PlanAcademiaAccion(objetivoParticular, meta, numeroPlan) VALUES(?,?,?)");
             sentencePlanAcademiaAccion.setString(1, planAcademiaAccion.getObjetivoParticular());
             sentencePlanAcademiaAccion.setString(2, planAcademiaAccion.getMeta());
             sentencePlanAcademiaAccion.setInt(3, numeroPlan);
@@ -76,16 +76,13 @@ public class PlanAcademiaAccionDAOImpl implements IPlanAcademiaAccionDAO {
     }
 
     @Override
-    public int buscarIdPlanAcademiaAccion(String objetivoParticular, String meta, int numeroPlan) {
+    public int buscarIdPlanAcademiaAccion(int numeroPlan) {
         int idPlanAcademiaAccion = 0;
         try {
             connection = conexion.getConnection();
-            String queryIdPlanAcademiaAccion = "Select idPlanAcademiaAccion FROM PlanAcademiaAccion where " +
-                    "objetivoParticular = ?, meta = ?, numeroPlan = ? ";
+            String queryIdPlanAcademiaAccion = "Select idPlanAcademiaAccion FROM PlanAcademiaAccion where numeroPlan = ? ";
             preparedStatement = connection.prepareStatement(queryIdPlanAcademiaAccion);
-            preparedStatement.setString(1, objetivoParticular);
-            preparedStatement.setString(2, meta);
-            preparedStatement.setInt(3, numeroPlan);
+            preparedStatement.setInt(1, numeroPlan);
             resultado = preparedStatement.executeQuery();
             while (resultado.next()) {
                 idPlanAcademiaAccion = resultado.getInt("idPlanAcademiaAccion");
